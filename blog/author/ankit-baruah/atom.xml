@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<feed xmlns="http://www.w3.org/2005/Atom">
+  <title type="text">Blog - Posts by Ankit Baruah</title>
+  <id>https://sunpy.org/blog.html/blog/author/ankit-baruah/atom.xml</id>
+  <updated>2017-08-29T00:00:00Z</updated>
+  <link href="https://sunpy.org/blog.html" />
+  <link href="https://sunpy.org/blog.html/blog/author/ankit-baruah/atom.xml" rel="self" />
+  <generator uri="http://ablog.readthedocs.org" version="0.8.4">ABlog</generator>
+  <entry xml:base="https://sunpy.org/blog.html/blog/author/ankit-baruah/atom.xml">
+    <title type="text">IRISPy and NDCube</title>
+    <id>https://sunpy.org/blog.html/posts/2017/2017-08-29-IRISPy-andNDCube.html</id>
+    <updated>2017-08-29T00:00:00Z</updated>
+    <published>2017-08-29T00:00:00Z</published>
+    <link href="https://sunpy.org/blog.html/posts/2017/2017-08-29-IRISPy-andNDCube.html" />
+    <author>
+      <name>Ankit Baruah</name>
+    </author>
+    <content type="html">&lt;div class=&quot;section&quot; id=&quot;irispy-and-ndcube&quot;&gt;
+
+&lt;p&gt;GSoC has come to an end, it was one of the best summer experience I had.  In
+this summer I had to create a new affiliated package IRISPy but during this
+project making a base package for multi-dimensional contiguious and
+non-contiguious spatially aware arrays (from readme.md of NDCube) was a natural
+step so ended up developing another repository NDCube.  This was initially
+a part of sunpycube but after breaking and burning everything we ended up with
+ndcube :P.&lt;/p&gt;
+&lt;div class=&quot;section&quot; id=&quot;ndcube&quot;&gt;
+&lt;h2&gt;NDCube&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://github.com/sunpy/ndcube&quot;&gt;NDCube&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://github.com/abit2/cube/pull/10&quot;&gt;PR10&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;The NDCube has two container objects:&lt;/p&gt;
+&lt;p&gt;1. NDCube which can handle n-dimensional data containing WCS objects and metadata.
+This has different methods such as:&lt;/p&gt;
+&lt;p&gt;The basic slicing i.e &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;__getitem__&lt;/span&gt;&lt;/code&gt; of N-dimensional objects like numpy.array
+and this also handle the slicing of WCS objects.  Suppose we are dropping
+a axis, this is handled by setting the WCS value to one for that axis.&lt;/p&gt;
+&lt;div class=&quot;highlight-default&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre&gt;&lt;span&gt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;In&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cube2&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dimensions&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;Out&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DimensionPair&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;shape&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Quantity&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;2.&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;3.&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;4.&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pix&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;axis_types&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;HPLN-TAN&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;HPLT-TAN&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;WAVE&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;In&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cube2&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;Out&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;5&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;Sunpy&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NDCube&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;---------------------&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;WCS&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Keywords&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;Number&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;WCS&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;axes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;CTYPE&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;WAVE&amp;#39;&lt;/span&gt;  &lt;span class=&quot;s1&quot;&gt;&amp;#39;HPLT-TAN&amp;#39;&lt;/span&gt;  &lt;span class=&quot;s1&quot;&gt;&amp;#39;HPLN-TAN&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;CRVAL&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;1.0000000000000001e-09&lt;/span&gt;  &lt;span class=&quot;mf&quot;&gt;0.5&lt;/span&gt;  &lt;span class=&quot;mf&quot;&gt;1.0&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;CRPIX&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.0&lt;/span&gt;  &lt;span class=&quot;mf&quot;&gt;2.0&lt;/span&gt;  &lt;span class=&quot;mf&quot;&gt;2.0&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;PC1_1&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PC1_2&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PC1_3&lt;/span&gt;  &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;1.0&lt;/span&gt;  &lt;span class=&quot;mf&quot;&gt;0.0&lt;/span&gt;  &lt;span class=&quot;mf&quot;&gt;0.0&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;PC2_1&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PC2_2&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PC2_3&lt;/span&gt;  &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.0&lt;/span&gt;  &lt;span class=&quot;mf&quot;&gt;1.0&lt;/span&gt;  &lt;span class=&quot;mf&quot;&gt;0.0&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;PC3_1&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PC3_2&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PC3_3&lt;/span&gt;  &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.0&lt;/span&gt;  &lt;span class=&quot;mf&quot;&gt;0.0&lt;/span&gt;  &lt;span class=&quot;mf&quot;&gt;1.0&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;CDELT&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;2.0000000000000002e-11&lt;/span&gt;  &lt;span class=&quot;mf&quot;&gt;0.5&lt;/span&gt;  &lt;span class=&quot;mf&quot;&gt;0.40000000000000002&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;NAXIS&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;  &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;  &lt;span class=&quot;mi&quot;&gt;2&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;---------------------&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;Length&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NDCube&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;2.&lt;/span&gt;  &lt;span class=&quot;mf&quot;&gt;3.&lt;/span&gt;  &lt;span class=&quot;mf&quot;&gt;4.&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pix&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;Axis&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Types&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NDCube&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;HPLN-TAN&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;HPLT-TAN&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;WAVE&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;In&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cube2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:]&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;Out&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;6&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;Sunpy&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NDCube&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;---------------------&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;WCS&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Keywords&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;Number&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;WCS&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;axes&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;CTYPE&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;WAVE&amp;#39;&lt;/span&gt;  &lt;span class=&quot;s1&quot;&gt;&amp;#39;HPLT-TAN&amp;#39;&lt;/span&gt;  &lt;span class=&quot;s1&quot;&gt;&amp;#39;HPLN-TAN&amp;#39;&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;CRVAL&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;1.0000000000000001e-09&lt;/span&gt;  &lt;span class=&quot;mf&quot;&gt;0.5&lt;/span&gt;  &lt;span class=&quot;mf&quot;&gt;1.0&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;CRPIX&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.0&lt;/span&gt;  &lt;span class=&quot;mf&quot;&gt;2.0&lt;/span&gt;  &lt;span class=&quot;mf&quot;&gt;2.0&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;PC1_1&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PC1_2&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PC1_3&lt;/span&gt;  &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;1.0&lt;/span&gt;  &lt;span class=&quot;mf&quot;&gt;0.0&lt;/span&gt;  &lt;span class=&quot;mf&quot;&gt;0.0&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;PC2_1&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PC2_2&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PC2_3&lt;/span&gt;  &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.0&lt;/span&gt;  &lt;span class=&quot;mf&quot;&gt;1.0&lt;/span&gt;  &lt;span class=&quot;mf&quot;&gt;0.0&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;PC3_1&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PC3_2&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;PC3_3&lt;/span&gt;  &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;0.0&lt;/span&gt;  &lt;span class=&quot;mf&quot;&gt;0.0&lt;/span&gt;  &lt;span class=&quot;mf&quot;&gt;1.0&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;CDELT&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;2.0000000000000002e-11&lt;/span&gt;  &lt;span class=&quot;mf&quot;&gt;0.5&lt;/span&gt;  &lt;span class=&quot;mf&quot;&gt;0.40000000000000002&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;NAXIS&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;4&lt;/span&gt;  &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;  &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;---------------------&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;Length&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NDCube&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;3.&lt;/span&gt;  &lt;span class=&quot;mf&quot;&gt;4.&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pix&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;Axis&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;Types&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;of&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;NDCube&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;HPLT-TAN&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;WAVE&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;In&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;cube2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:,&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;:]&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;dimensions&lt;/span&gt;
+&lt;span class=&quot;n&quot;&gt;Out&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;7&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;DimensionPair&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;shape&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&amp;lt;&lt;/span&gt;&lt;span class=&quot;n&quot;&gt;Quantity&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;[&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;3.&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;mf&quot;&gt;4.&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;]&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;pix&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;axis_types&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;=&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;&amp;#39;HPLT-TAN&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;s1&quot;&gt;&amp;#39;WAVE&amp;#39;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt;
+&lt;/pre&gt;&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;plot()&lt;/span&gt;&lt;/code&gt; method that animates if dimension is greater than 2, else if dimension less than equal to 2 than plots images, this animations uses the WCS data for the axis.&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;world_to_pixel()&lt;/span&gt;&lt;/code&gt; method converts world coordinates to pixel coordinates, this method is unit aware.&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;pixel_to_world()&lt;/span&gt;&lt;/code&gt; method converts pixel coordinates to world coordinates, this method is unit aware.&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;to_sunpy()&lt;/span&gt;&lt;/code&gt; this method automates the conversion of present NDCube instance to sunpy instance is it satisfies all the necessary requirements. Presently it supports Map and work is going on in TimeSeries.&lt;/p&gt;
+&lt;p&gt;2. &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;NDCubeSequence&lt;/span&gt;&lt;/code&gt; which handles a list of NDCube object, this also handles extra coordinate axis which is parallel to one of the data axis.
+This has methods such as:&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;plot()&lt;/span&gt;&lt;/code&gt; method that creates a animation using the data of the WCS for the axis.&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;__getitem__&lt;/span&gt;&lt;/code&gt; method that slices the sequence like a list containing NDCubes which also handles slicing of WCS objects.&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;index_as_cube()&lt;/span&gt;&lt;/code&gt; this method handles the slicing of sequence as a single N-dimensional object.
+Example: if the dimension of NDCube objects inside the list of NDCubeSequence is 3 then this method will treat slicing of sequence as single 3 dimensional object by concatenating all the cubes.
+So this makes the dimensions as &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;(len(list_inside_cubesequence)*NDCube[1st&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;dimension],&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;NDCube[2nd&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;dimension],&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;NDCube[3rd&lt;/span&gt; &lt;span class=&quot;pre&quot;&gt;dimension])&lt;/span&gt;&lt;/code&gt;.&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;explode_along_axis()&lt;/span&gt;&lt;/code&gt; method that slices NDCube object along that axis.
+This is useful to reduce the dimension of NDCube’s inside the sequence list.
+This will create a new sequence as this break the cube along one axis.&lt;/p&gt;
+&lt;p&gt;&lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;to_sunpy()&lt;/span&gt;&lt;/code&gt; method it creates a new Sunpy instance if it satisfies the requirements.
+Presently only mapcube is implemented.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class=&quot;section&quot; id=&quot;irispy&quot;&gt;
+&lt;h2&gt;IRISPy&lt;/h2&gt;
+&lt;p&gt;&lt;a class=&quot;reference external&quot; href=&quot;https://github.com/abit2/irispy/pull/3&quot;&gt;PR3&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;IRISPy class was a easy implementation after the useful and challenging NDCube repository was alive.
+This made creating a new class such as IRISSpectrograph a rather simple task.
+This was done in a clean and neat way.&lt;/p&gt;
+&lt;p&gt;So this class object has all the inherent methods and properties of NDCubeSequence as it uses this as it’s base class.&lt;/p&gt;
+&lt;p&gt;Future work includes making changes to &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;IRISSpectrograph&lt;/span&gt;&lt;/code&gt; to include the recently added changes such as
+SpectrographSequence, so this is a new sequence which is using the &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;NDCubeSequence&lt;/span&gt;&lt;/code&gt; as it’s parent class. Making the
+iris tools working properly with the new IRISSpectrograph. Developing NDCube’s and NDCubeSequence’s &lt;code class=&quot;docutils literal&quot;&gt;&lt;span class=&quot;pre&quot;&gt;to_sunpy&lt;/span&gt;&lt;/code&gt; method
+to handle all the sunpy objects.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</content>
+  </entry>
+</feed>

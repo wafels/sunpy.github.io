@@ -1,0 +1,363 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>IRISPy and NDCube</title>
+    <link rel="stylesheet" href="../../_static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="../../_static/style.css" type="text/css" />
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    '../../',
+        VERSION:     '',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
+      };
+    </script>
+    <script type="text/javascript" src="../../_static/jquery.js"></script>
+    <script type="text/javascript" src="../../_static/underscore.js"></script>
+    <script type="text/javascript" src="../../_static/doctools.js"></script>
+    <script type="text/javascript" src="../../_static/copybutton.js"></script>
+    <script type="text/javascript" src="../../_static/version.js"></script>
+    <script type="text/javascript" src="../../_static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../../_static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../../_static/bootstrap-sphinx.js"></script>
+    <link rel="shortcut icon" href="../../_static/favicon-32.ico"/>
+    <link rel="author" title="About these documents" href="../../about.html" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+  <!-- Facebook OpenGraph -->
+  <meta property="og:title" content="IRISPy and NDCube | " />
+  <meta property="og:type" content="website" />
+  <meta property="og:url" content="../../sunpy.org/posts/2017/2017-08-29-IRISPy-andNDCube.html" />
+  <meta property="og:image" content="../../sunpy.org/_static/img/sunpy_icon.svg" />
+  <meta property="og:description" content="SunPy" />
+  <meta property="og:site_name" content="" />
+
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  
+  <link rel="alternate" type="application/atom+xml"  href="../../blog/atom.xml" title="Blog">
+  
+  
+  <style type="text/css">
+    ul.ablog-archive {list-style: none; overflow: auto; margin-left: 0px}
+    ul.ablog-archive li {float: left; margin-right: 5px; font-size: 80%}
+    ul.postlist a {font-style: italic;}
+    ul.postlist-style-disc {list-style-type: disc;}
+    ul.postlist-style-none {list-style-type: none;}
+    ul.postlist-style-circle {list-style-type: circle;}
+  </style>
+
+  </head>
+  <body>
+  
+<div id="navbar" class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+	  <div class="navbar-header">
+	    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+	      <span class="icon-bar"></span>
+	      <span class="icon-bar"></span>
+	      <span class="icon-bar"></span>
+	    </button>
+	    <a class="navbar-brand" href="http://sunpy.org/">SunPy</a>
+	  </div>
+	  <div class="collapse navbar-collapse nav-collapse">
+	    <ul class="nav navbar-nav">
+		    
+		    <div class="collapse navbar-collapse nav-collapse">
+			    <ul class="nav navbar-nav navbar-left">
+			    	<li class="dropdown">
+			    	 <a role="button" id="dLabelGlobalToc" data-toggle="dropdown" data-target="#" href="#">About<b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li class="dropdown-submenu">
+                  <a href="http://sunpy.org/about.html">About</a>
+                </li>
+                <li class="dropdown-submenu">
+                  <a href="http://sunpy.org/about.html#acknowledging-sunpy">Acknowledge</a>
+            		</li>
+            		<li class="dropdown-submenu">
+                  <a href="http://docs.sunpy.org/en/stable/coc.html">Code of Conduct</a>
+            		</li>
+              </ul>
+			      </li>
+			      <li><a href="http://sunpy.org/blog.html">Blog</a></li>
+			      <li class="dropdown">
+			    	 <a role="button" id="dLabelGlobalToc" data-toggle="dropdown" data-target="#" href="#">Documentation<b class="caret"></b></a>
+              <ul class="dropdown-menu">
+                <li class="dropdown-submenu">
+                  <a href="http://docs.sunpy.org/en/stable/">SunPy</a>
+                </li>
+                <li class="dropdown-submenu">
+                  <a href="http://docs.sunpy.org/projects/irispy/en/latest/">IRISPy</a>
+            		</li>
+            		<li class="dropdown-submenu">
+                  <a href="http://docs.sunpy.org/projects/solarbextrapolation/en/latest/">SolarBExtrapolation</a>
+            		</li>
+            		<li class="dropdown-submenu">
+                  <a href="http://docs.sunpy.org/projects/sunkit-sst/en/latest/index.html">sunkit-sst</a>
+            		</li>
+              </ul>
+			      </li>
+			      <li><a href="http://sunpy.org/contribute.html">Support Us</a></li>
+			      <li><a href="http://sunpy.org/help.html">Get Help</a></li>
+			      <li><a href="http://sunpy.org/team.html">SunPy Project</a></li>
+	    	
+	        </ul>
+	    </div>
+      </ul>
+	  </div>
+  </div>
+</div>
+
+  <div class="container">
+    <div class="row">
+          <div class="col-md-4" id="sidebar">
+            <div id="sidebar" class="bs-sidenav" role="complementary">
+  
+  
+  <h2>
+  
+  
+    29 August 2017
+  
+  </h2>
+
+  <ul>
+    
+
+  
+  <li id="author"><span>Author:</span>
+    
+      
+      <a href="../../blog/author/ankit-baruah.html">Ankit Baruah</a>
+      
+    </li>
+  
+
+  
+
+  
+
+  
+  <li id="category"><span>Category:</span>
+    
+      
+      <a href="../../blog/category/gsoc.html">GSoC</a>
+      
+    </li>
+  
+
+  
+  <li id="tags"><span>Tags:</span>
+      
+    
+      
+      <a href="../../blog/tag/gsoc.html">GSoC</a>
+      
+    
+      
+      <a href="../../blog/tag/code.html">Code</a>
+      
+    
+      
+      <a href="../../blog/tag/fun.html">Fun</a>
+      
+    </li>
+  
+  
+  <li id="comments">
+    <script type="text/javascript">
+    /* * * CONFIGURATION VARIABLES: EDIT BEFORE PASTING INTO YOUR WEBPAGE * * */
+    var disqus_shortname = 'sunpy-org'; // required: replace example with your forum shortname
+
+    /* * * DON'T EDIT BELOW THIS LINE * * */
+    (function () {
+    var s = document.createElement('script'); s.async = true;
+    s.type = 'text/javascript';
+    s.src = '//' + disqus_shortname + '.disqus.com/count.js';
+    (document.getElementsByTagName('HEAD')[0] || document.getElementsByTagName('BODY')[0]).appendChild(s);
+    }());
+    </script>
+    
+    <a href="#disqus_thread" data-disqus-identifier="/posts/2017/2017-08-29-IRISPy-andNDCube/"> Comments</a>
+  </li>
+  
+  </ul>
+
+
+
+            </div>
+          </div>
+      
+      <div class="col-md-8 content">
+        
+  <div class="section" id="irispy-and-ndcube">
+<h1>IRISPy and NDCube<a class="headerlink" href="#irispy-and-ndcube" title="Permalink to this headline">¶</a></h1>
+<p>GSoC has come to an end, it was one of the best summer experience I had.  In
+this summer I had to create a new affiliated package IRISPy but during this
+project making a base package for multi-dimensional contiguious and
+non-contiguious spatially aware arrays (from readme.md of NDCube) was a natural
+step so ended up developing another repository NDCube.  This was initially
+a part of sunpycube but after breaking and burning everything we ended up with
+ndcube :P.</p>
+<div class="section" id="ndcube">
+<h2>NDCube<a class="headerlink" href="#ndcube" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://github.com/sunpy/ndcube">NDCube</a>.</p>
+<p><a class="reference external" href="https://github.com/abit2/cube/pull/10">PR10</a>.</p>
+<p>The NDCube has two container objects:</p>
+<p>1. NDCube which can handle n-dimensional data containing WCS objects and metadata.
+This has different methods such as:</p>
+<p>The basic slicing i.e <code class="docutils literal"><span class="pre">__getitem__</span></code> of N-dimensional objects like numpy.array
+and this also handle the slicing of WCS objects.  Suppose we are dropping
+a axis, this is handled by setting the WCS value to one for that axis.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">In</span> <span class="p">[</span><span class="mi">4</span><span class="p">]:</span> <span class="n">cube2</span><span class="o">.</span><span class="n">dimensions</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">4</span><span class="p">]:</span> <span class="n">DimensionPair</span><span class="p">(</span><span class="n">shape</span><span class="o">=&lt;</span><span class="n">Quantity</span> <span class="p">[</span> <span class="mf">2.</span><span class="p">,</span> <span class="mf">3.</span><span class="p">,</span> <span class="mf">4.</span><span class="p">]</span> <span class="n">pix</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">axis_types</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;HPLN-TAN&#39;</span><span class="p">,</span> <span class="s1">&#39;HPLT-TAN&#39;</span><span class="p">,</span> <span class="s1">&#39;WAVE&#39;</span><span class="p">])</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">5</span><span class="p">]:</span> <span class="n">cube2</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">5</span><span class="p">]:</span>
+<span class="n">Sunpy</span> <span class="n">NDCube</span>
+<span class="o">---------------------</span>
+<span class="n">WCS</span> <span class="n">Keywords</span>
+<span class="n">Number</span> <span class="n">of</span> <span class="n">WCS</span> <span class="n">axes</span><span class="p">:</span> <span class="mi">3</span>
+<span class="n">CTYPE</span> <span class="p">:</span> <span class="s1">&#39;WAVE&#39;</span>  <span class="s1">&#39;HPLT-TAN&#39;</span>  <span class="s1">&#39;HPLN-TAN&#39;</span>
+<span class="n">CRVAL</span> <span class="p">:</span> <span class="mf">1.0000000000000001e-09</span>  <span class="mf">0.5</span>  <span class="mf">1.0</span>
+<span class="n">CRPIX</span> <span class="p">:</span> <span class="mf">0.0</span>  <span class="mf">2.0</span>  <span class="mf">2.0</span>
+<span class="n">PC1_1</span> <span class="n">PC1_2</span> <span class="n">PC1_3</span>  <span class="p">:</span> <span class="mf">1.0</span>  <span class="mf">0.0</span>  <span class="mf">0.0</span>
+<span class="n">PC2_1</span> <span class="n">PC2_2</span> <span class="n">PC2_3</span>  <span class="p">:</span> <span class="mf">0.0</span>  <span class="mf">1.0</span>  <span class="mf">0.0</span>
+<span class="n">PC3_1</span> <span class="n">PC3_2</span> <span class="n">PC3_3</span>  <span class="p">:</span> <span class="mf">0.0</span>  <span class="mf">0.0</span>  <span class="mf">1.0</span>
+<span class="n">CDELT</span> <span class="p">:</span> <span class="mf">2.0000000000000002e-11</span>  <span class="mf">0.5</span>  <span class="mf">0.40000000000000002</span>
+<span class="n">NAXIS</span> <span class="p">:</span> <span class="mi">4</span>  <span class="mi">3</span>  <span class="mi">2</span>
+<span class="o">---------------------</span>
+<span class="n">Length</span> <span class="n">of</span> <span class="n">NDCube</span><span class="p">:</span> <span class="p">[</span> <span class="mf">2.</span>  <span class="mf">3.</span>  <span class="mf">4.</span><span class="p">]</span> <span class="n">pix</span>
+<span class="n">Axis</span> <span class="n">Types</span> <span class="n">of</span> <span class="n">NDCube</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;HPLN-TAN&#39;</span><span class="p">,</span> <span class="s1">&#39;HPLT-TAN&#39;</span><span class="p">,</span> <span class="s1">&#39;WAVE&#39;</span><span class="p">]</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">6</span><span class="p">]:</span> <span class="n">cube2</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:]</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">6</span><span class="p">]:</span>
+<span class="n">Sunpy</span> <span class="n">NDCube</span>
+<span class="o">---------------------</span>
+<span class="n">WCS</span> <span class="n">Keywords</span>
+<span class="n">Number</span> <span class="n">of</span> <span class="n">WCS</span> <span class="n">axes</span><span class="p">:</span> <span class="mi">3</span>
+<span class="n">CTYPE</span> <span class="p">:</span> <span class="s1">&#39;WAVE&#39;</span>  <span class="s1">&#39;HPLT-TAN&#39;</span>  <span class="s1">&#39;HPLN-TAN&#39;</span>
+<span class="n">CRVAL</span> <span class="p">:</span> <span class="mf">1.0000000000000001e-09</span>  <span class="mf">0.5</span>  <span class="mf">1.0</span>
+<span class="n">CRPIX</span> <span class="p">:</span> <span class="mf">0.0</span>  <span class="mf">2.0</span>  <span class="mf">2.0</span>
+<span class="n">PC1_1</span> <span class="n">PC1_2</span> <span class="n">PC1_3</span>  <span class="p">:</span> <span class="mf">1.0</span>  <span class="mf">0.0</span>  <span class="mf">0.0</span>
+<span class="n">PC2_1</span> <span class="n">PC2_2</span> <span class="n">PC2_3</span>  <span class="p">:</span> <span class="mf">0.0</span>  <span class="mf">1.0</span>  <span class="mf">0.0</span>
+<span class="n">PC3_1</span> <span class="n">PC3_2</span> <span class="n">PC3_3</span>  <span class="p">:</span> <span class="mf">0.0</span>  <span class="mf">0.0</span>  <span class="mf">1.0</span>
+<span class="n">CDELT</span> <span class="p">:</span> <span class="mf">2.0000000000000002e-11</span>  <span class="mf">0.5</span>  <span class="mf">0.40000000000000002</span>
+<span class="n">NAXIS</span> <span class="p">:</span> <span class="mi">4</span>  <span class="mi">3</span>  <span class="mi">1</span>
+<span class="o">---------------------</span>
+<span class="n">Length</span> <span class="n">of</span> <span class="n">NDCube</span><span class="p">:</span> <span class="p">[</span> <span class="mf">3.</span>  <span class="mf">4.</span><span class="p">]</span> <span class="n">pix</span>
+<span class="n">Axis</span> <span class="n">Types</span> <span class="n">of</span> <span class="n">NDCube</span><span class="p">:</span> <span class="p">[</span><span class="s1">&#39;HPLT-TAN&#39;</span><span class="p">,</span> <span class="s1">&#39;WAVE&#39;</span><span class="p">]</span>
+<span class="n">In</span> <span class="p">[</span><span class="mi">7</span><span class="p">]:</span> <span class="n">cube2</span><span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="p">:,</span> <span class="p">:]</span><span class="o">.</span><span class="n">dimensions</span>
+<span class="n">Out</span><span class="p">[</span><span class="mi">7</span><span class="p">]:</span> <span class="n">DimensionPair</span><span class="p">(</span><span class="n">shape</span><span class="o">=&lt;</span><span class="n">Quantity</span> <span class="p">[</span> <span class="mf">3.</span><span class="p">,</span> <span class="mf">4.</span><span class="p">]</span> <span class="n">pix</span><span class="o">&gt;</span><span class="p">,</span> <span class="n">axis_types</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;HPLT-TAN&#39;</span><span class="p">,</span> <span class="s1">&#39;WAVE&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+<p><code class="docutils literal"><span class="pre">plot()</span></code> method that animates if dimension is greater than 2, else if dimension less than equal to 2 than plots images, this animations uses the WCS data for the axis.</p>
+<p><code class="docutils literal"><span class="pre">world_to_pixel()</span></code> method converts world coordinates to pixel coordinates, this method is unit aware.</p>
+<p><code class="docutils literal"><span class="pre">pixel_to_world()</span></code> method converts pixel coordinates to world coordinates, this method is unit aware.</p>
+<p><code class="docutils literal"><span class="pre">to_sunpy()</span></code> this method automates the conversion of present NDCube instance to sunpy instance is it satisfies all the necessary requirements. Presently it supports Map and work is going on in TimeSeries.</p>
+<p>2. <code class="docutils literal"><span class="pre">NDCubeSequence</span></code> which handles a list of NDCube object, this also handles extra coordinate axis which is parallel to one of the data axis.
+This has methods such as:</p>
+<p><code class="docutils literal"><span class="pre">plot()</span></code> method that creates a animation using the data of the WCS for the axis.</p>
+<p><code class="docutils literal"><span class="pre">__getitem__</span></code> method that slices the sequence like a list containing NDCubes which also handles slicing of WCS objects.</p>
+<p><code class="docutils literal"><span class="pre">index_as_cube()</span></code> this method handles the slicing of sequence as a single N-dimensional object.
+Example: if the dimension of NDCube objects inside the list of NDCubeSequence is 3 then this method will treat slicing of sequence as single 3 dimensional object by concatenating all the cubes.
+So this makes the dimensions as <code class="docutils literal"><span class="pre">(len(list_inside_cubesequence)*NDCube[1st</span> <span class="pre">dimension],</span> <span class="pre">NDCube[2nd</span> <span class="pre">dimension],</span> <span class="pre">NDCube[3rd</span> <span class="pre">dimension])</span></code>.</p>
+<p><code class="docutils literal"><span class="pre">explode_along_axis()</span></code> method that slices NDCube object along that axis.
+This is useful to reduce the dimension of NDCube’s inside the sequence list.
+This will create a new sequence as this break the cube along one axis.</p>
+<p><code class="docutils literal"><span class="pre">to_sunpy()</span></code> method it creates a new Sunpy instance if it satisfies the requirements.
+Presently only mapcube is implemented.</p>
+</div>
+<div class="section" id="irispy">
+<h2>IRISPy<a class="headerlink" href="#irispy" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://github.com/abit2/irispy/pull/3">PR3</a>.</p>
+<p>IRISPy class was a easy implementation after the useful and challenging NDCube repository was alive.
+This made creating a new class such as IRISSpectrograph a rather simple task.
+This was done in a clean and neat way.</p>
+<p>So this class object has all the inherent methods and properties of NDCubeSequence as it uses this as it’s base class.</p>
+<p>Future work includes making changes to <code class="docutils literal"><span class="pre">IRISSpectrograph</span></code> to include the recently added changes such as
+SpectrographSequence, so this is a new sequence which is using the <code class="docutils literal"><span class="pre">NDCubeSequence</span></code> as it’s parent class. Making the
+iris tools working properly with the new IRISSpectrograph. Developing NDCube’s and NDCubeSequence’s <code class="docutils literal"><span class="pre">to_sunpy</span></code> method
+to handle all the sunpy objects.</p>
+</div>
+</div>
+
+  <div class="section">
+  
+    
+
+
+<div class="section">
+  <span style="float: left;">
+  
+  Previous: 
+  <a href="2017-08-16-sunpy-website-improvements.html">
+    
+    Sunpy Website Improvements
+  </a>
+  
+  </span>
+  <span>&nbsp;</span>
+  <span style="float: right;">
+  
+</div>
+
+  
+  
+    <div class="section">
+    <h2>Comments</h2>
+    <div id="disqus_thread"></div>
+    <script type="text/javascript">
+        var disqus_shortname = 'sunpy-org';
+        var disqus_identifier = '/posts/2017/2017-08-29-IRISPy-andNDCube/';
+        var disqus_title = 'IRISPy and NDCube';
+        var disqus_url = 'https://sunpy.org/posts/2017/2017-08-29-IRISPy-andNDCube';
+
+        (function() {
+            var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+            dsq.src = '//' + disqus_shortname + '.disqus.com/embed.js';
+            (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+        })();
+    </script>
+    <noscript>Please enable JavaScript to view the <a href="http://disqus.com/?ref_noscript">comments powered by Disqus.</a></noscript>
+    <a href="http://disqus.com" class="dsq-brlink">comments powered by <span class="logo-disqus">Disqus</span></a>
+    </div>
+  
+  </div>
+
+      </div>
+        
+    </div>
+  </div>
+  <footer class="footer">
+    <div class="container">
+      <div class="left-footer">
+          <p>
+                &copy; SunPy Project  
+            
+<a style= "padding-left: 10px;" rel="licence" href="http://creativecommons.org/licenses/by/4.0/">
+<img src="https://i.creativecommons.org/l/by/4.0/80x15.png">
+</a>
+
+        </p>
+      </div>
+      <div class="right-footer">
+          Built with <a href="http://sphinx-doc.org/">Sphinx 1.6.4.</a>
+      </div>
+      <div class="center-footer ">
+        <a href="https://github.com/sunpy/sunpy">Github</a>
+        <span> • </span>
+        <a href="https://twitter.com/SunPyProject">Twitter</a>
+        <span> • </span>
+        <a href="https://riot.im/app/#/room/#sunpy-general:matrix.org">Matrix</a>
+      </div>
+    </div>
+  </footer>
+
+  </body>
+</html>
